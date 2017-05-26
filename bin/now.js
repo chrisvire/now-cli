@@ -54,6 +54,7 @@ const commands = new Set([
   'logs',
   'scale',
   'logout',
+  'info',
   'whoami'
 ])
 
@@ -69,7 +70,8 @@ const aliases = new Map([
   ['downgrade', 'upgrade'],
   ['team', 'teams'],
   ['switch', 'teams switch'],
-  ['log', 'logs']
+  ['log', 'logs'],
+  ['whoami', 'info']
 ])
 
 let cmd = defaultCommand

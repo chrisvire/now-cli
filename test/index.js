@@ -238,3 +238,17 @@ test('support `package.json:now.type` to bypass multiple manifests error', async
   t.is(nowConfig.type, 'npm')
   t.is(hasNowJson, false)
 })
+
+test('support `now.json` files overrides `.gitignore`', async t => {
+  let files = await getNpmFiles(fixture('now-json-files-overrides-gitignore'))
+  files = files.sort(alpha)
+  t.is(files.length, 7)
+  t.is(base(files[0]), 'now-json-files-overrides-gitignore/.gitignore')
+  t.is(base(files[1]), 'now-json-files-overrides-gitignore/a.js')
+  t.is(base(files[2]), 'now-json-files-overrides-gitignore/b.js')
+  t.is(base(files[3]), 'now-json-files-overrides-gitignore/data/.keep')
+  t.is(base(files[4]), 'now-json-files-overrides-gitignore/data/1/test.txt')
+  t.is(base(files[5]), 'now-json-files-overrides-gitignore/now.json')
+  t.is(base(files[6]), 'now-json-files-overrides-gitignore/package.json')
+})
+
